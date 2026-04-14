@@ -25,7 +25,7 @@ def home_page():
     folium_map = folium.Map(
         location=start_coords
     )
-    folium_map.save('templates/bangalore_map.html')
+    folium_map.save('tmp/bangalore_map.html')
 
     # First_MAP
     first_map = folium.Map(location=[12.9716, 77.5946], tiles='stamentoner')
@@ -37,7 +37,7 @@ def home_page():
     sw = first_df[['latitude', 'longitude']].min().values.tolist()
     ne = first_df[['latitude', 'longitude']].max().values.tolist()
     first_map.fit_bounds([sw, ne])
-    first_map.save('templates/charging_map.html')
+    first_map.save('tmp/charging_map.html')
 
     # shopping Mall
     for indice, row in malls_df.iterrows():
@@ -50,7 +50,7 @@ def home_page():
     sw = malls_df[['latitude', 'longitude']].min().values.tolist()
     ne = malls_df[['latitude', 'longitude']].max().values.tolist()
     first_map.fit_bounds([sw, ne])
-    first_map.save('templates/shopping_mall_map.html')
+    first_map.save('tmp/shopping_mall_map.html')
 
     # gas station
     for indice, row in fuel_df.iterrows():
@@ -64,7 +64,7 @@ def home_page():
     ne = fuel_df[['latitude', 'longitude']].max().values.tolist()
 
     first_map.fit_bounds([sw, ne])
-    first_map.save('templates/fuel_map.html')
+    first_map.save('tmp/fuel_map.html')
 
     # Apartment
 
@@ -79,7 +79,7 @@ def home_page():
     ne = apartment_df[['latitude', 'longitude']].max().values.tolist()
 
     first_map.fit_bounds([sw, ne])
-    first_map.save('templates/apartment_map.html')
+    first_map.save('tmp/apartment_map.html')
 
     # Parking
     for indice, row in parking_df.iterrows():
@@ -94,7 +94,7 @@ def home_page():
     ne = parking_df[['latitude', 'longitude']].max().values.tolist()
 
     first_map.fit_bounds([sw, ne])
-    first_map.save('templates/parking_map.html')
+    first_map.save('tmp/parking_map.html')
 
     # University
 
@@ -109,7 +109,7 @@ def home_page():
     ne = university_df[['latitude', 'longitude']].max().values.tolist()
 
     first_map.fit_bounds([sw, ne])
-    first_map.save('templates/university_map.html')
+    first_map.save('tmp/university_map.html')
 
     # Final
     final = folium.Map(location=[12.9716, 77.5946], tiles='stamentoner')
@@ -131,7 +131,7 @@ def home_page():
     ne = final_df[['latitude', 'longitude']].max().values.tolist()
 
     final.fit_bounds([sw, ne])
-    final.save('templates/result_map.html')
+    final.save('tmp/result_map.html')
 
     return render_template('index.html')
 
@@ -205,7 +205,7 @@ def output():
 
         final.fit_bounds([sw, ne])
 
-        final.save('templates/output_map.html')
+        final.save('tmp/output_map.html')
     return render_template("output.html",
                            my_input1=EVPR,
                            tables=[final_df.to_html(classes='table table-bordered table-hover" id = "optimum_table',
